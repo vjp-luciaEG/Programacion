@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author alumno
+ * @author Lucia
  */
 public class T3Ej06 {
 
@@ -20,9 +20,22 @@ public class T3Ej06 {
         Scanner entrada = new Scanner(System.in);
         
         System.out.println("Porfavor, introduzca su nota:");
-        byte nota = entrada.nextByte(); //Declaramos la variable de entrada
+        float nota = entrada.nextFloat(); //Declaramos la variable de entrada
         
-        if (nota == 0){
+        //Condicional variable nota
+        if (nota < 0 || nota > 10){
+            System.out.println("Error");
+        } else if (nota <= 4){
+            System.out.println("Suspenso");
+        } else if (nota <=6){
+            System.out.println("Bien");
+        } else if (nota <=8){
+            System.out.println("Notable");
+        } 
+        else {
+            System.out.println("Sobresaliente");
+        }
+         
     }
     
 }
