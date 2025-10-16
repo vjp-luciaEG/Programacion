@@ -17,12 +17,15 @@ public class T3Ej14 {
         // TODO code application logic here
         //100 PRIMEROS NUMEROS PARES
         
-        byte i;
+        int i=0;
+        int cien=0;
         
-        for(i=0;i<=100;i++){
+        while(cien<=100){
             if (i%2==0){
-                System.out.println(i);    
-            }       
+                System.out.println(i);
+                cien++;
+            }
+            i++;
                     
             }
         }
