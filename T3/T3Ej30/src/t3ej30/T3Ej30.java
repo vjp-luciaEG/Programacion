@@ -19,15 +19,15 @@ public class T3Ej30 {
          //ADIVINA EL NUMERO #2
         
         Scanner entrada = new Scanner(System.in);
-        double x;
+        int x = -1;
         double aleatorio = Math.floor((Math.random())*101);
         int intentos = 0;
         
-        do{
+        while(x!=aleatorio){
            
             try{
                 System.out.println("Adivine el numero entre 0 y 100: ");
-                x = entrada.nextDouble();
+                x = entrada.nextInt();
             
                 if(x<aleatorio){
                     System.out.println("El numero a adivinar es mayor que el introducido");
@@ -39,9 +39,10 @@ public class T3Ej30 {
             }
             catch(InputMismatchException e){
                 System.err.println("Error");
-                x = -1;
+                entrada.nextLine();
+                intentos++;
             }
-        } while(x!=aleatorio);
+        } 
         
         System.out.println("Correcto \nCompletado en " + intentos + " intentos ");
     }
