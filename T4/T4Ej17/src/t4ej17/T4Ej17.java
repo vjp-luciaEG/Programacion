@@ -23,7 +23,7 @@ public class T4Ej17 {
     }
     //Metodo para generar letra aleatoria
     public static char generarLetra(){
-        int letraAleatoria = (int) (Math.floor(Math.random()*(122-97+1)+97)); //Generamos el valor numerico de la letra aleatoria(Codigo Ascii)
+        int letraAleatoria = (int) (Math.floor(Math.random()*(99-97+1)+97)); //Generamos el valor numerico de la letra aleatoria(Codigo Ascii)
         return (char) letraAleatoria; //Devolvemos el valor en una variable tipo char
     }
     //Metodo para adivinar la letra
