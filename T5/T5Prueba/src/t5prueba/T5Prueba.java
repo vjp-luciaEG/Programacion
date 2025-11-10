@@ -23,16 +23,13 @@ public class T5Prueba {
         bici1.setTipo("Montana");
         bici1.setAntiguedad(6);
         
-        Bicicleta bici2 = new Bicicleta();
-        
-        bici2.setMarca("Canondale");
-        bici2.setColor("Azul");
-        bici2.setTipo("Carretera");
-        bici2.setAntiguedad(12);
+        Bicicleta bici2 = new Bicicleta("Cannondale", "Roja", "Carretera",15);
         
         bici1.mostrarBicicleta();
         
-        bici2.mostrarBicicleta();
+        System.out.println(bici2.toString());
+        System.out.println("Marca: " + bici2.getMarca());
+        System.out.println(bici1);
         
         bici1.mostrarAntiguedad();
         bici2.mostrarAntiguedad();
