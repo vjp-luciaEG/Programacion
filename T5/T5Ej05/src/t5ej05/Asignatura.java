@@ -11,14 +11,14 @@ package t5ej05;
 public class Asignatura {
     
     private String nombre;
-    private float nota;
+    private double nota;
 
     public Asignatura() {
         nombre = "";
         nota = 0;
     }
 
-    public Asignatura(String nom, float not) {
+    public Asignatura(String nom, double not) {
         nombre = nom;
         nota = not;
     }
@@ -28,5 +28,21 @@ public class Asignatura {
         nota = 0;
     }
     
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public double getNota(){
+        return nota;
+    }
+    
+    public void setNota(double not){
+        nota = not;
+    }
+    
+    public static double notaMedia(double notaProg, double notaLmsgi, double notaBd, double notaEd, double notaSi, double notaFol){
+        double notaMedia = (notaProg + notaLmsgi + notaBd + notaEd + notaSi + notaFol) / 6;
+        return notaMedia;
+    }
     
 }
