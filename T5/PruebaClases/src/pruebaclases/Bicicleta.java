@@ -42,6 +42,7 @@ public class Bicicleta {
         color="";
         tipo="";
         antiguedad=0;
+        propietario = new Propietario();
         aumentarContadorBicicletas();
     
     }
