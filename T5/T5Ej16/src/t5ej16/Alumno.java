@@ -11,8 +11,8 @@ package t5ej16;
 public class Alumno {
     
     //Atributos de la clase Alumno
-    private String nombre;
-    private int nota;
+    private static String nombre;
+    private static int nota;
     
     //Constructores
 
@@ -44,35 +44,21 @@ public class Alumno {
     }
     
     //Metodos
-    public static void mostrarCalificacion(int nota){
-        switch(nota){
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:{
-                System.err.println("Suspenso");
-                break;
-            }
-            case 5:
-            case 6:{
-                System.out.println("Bien");
-                break;
-            }
-            case 7:
-            case 8:{
-                System.out.println("Notable");
-                break;
-            }
-            case 9:
-            case 10:{
-                System.out.println("Sobresaliente");
-                break;
-            }
-            default:{
-                System.err.println("Error. Introduzca un numero entre 0 y 10");
-            }
+    public static String mostrarCalificacion(){
+        String calificacion;
+        if (nota < 0 || nota > 10){
+            calificacion = "Error";
+        } else if (nota <= 4){
+            calificacion = "Suspenso";
+        } else if (nota <=6){
+            calificacion = "Bien";
+        } else if (nota <=8){
+            calificacion = "Notable";
+        } 
+        else {
+            calificacion = "Sobresaliente";
         }
+       return calificacion;
     }
     
     //Mostrar datos de Alumno

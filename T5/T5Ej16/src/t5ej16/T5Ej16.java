@@ -13,26 +13,27 @@ public class T5Ej16 {
     /**
      * @param args the command line arguments
      */
-    
+    public static Alumno pedirNombreYNota(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Introduza el nombre del alumno:");
+        String nom = entrada.nextLine();
+        
+        System.out.println("Nota");
+        int not = entrada.nextInt();
+        return new Alumno(nom, not);
+    }
     public static void main(String[] args) {
         // TODO code application logic here
+        //CALIFICACIONES ALUMNO
         
-        Scanner entrada = new Scanner(System.in);
-        
-        Alumno alumno1 = new Alumno();
-        Alumno alumno2 = new Alumno();
-        Alumno alumno3 = new Alumno();
-        
-        try{
-            System.out.println("Introduzca el nombre del alumno: ");
-            alumno1.setNombre(entrada.nextLine());
-            System.out.println("Introduzca la nota");
-            alumno1.setNota(entrada.nextInt());
+            //Creamos los objetos de la clase Alumno asignando los parametros mediante un metodo 
+            Alumno alumno1 = pedirNombreYNota(); 
+            System.out.println(alumno1.mostrarCalificacion()); 
+            Alumno alumno2 = pedirNombreYNota();
+            System.out.println(alumno2.mostrarCalificacion());
+            Alumno alumno3 = pedirNombreYNota();
+            System.out.println(alumno3.mostrarCalificacion());
             
-        }
-        catch(Exception e){
-           
-        }
         
         
     }
