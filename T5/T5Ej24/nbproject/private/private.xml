@@ -4,9 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/alumno/Documents/NetBeansProjects/T5Ej24/src/t5ej24/T5Ej24.java</file>
-            <file>file:/C:/Users/alumno/Documents/NetBeansProjects/T5Ej24/src/t5ej24/Frescos.java</file>
-            <file>file:/C:/Users/alumno/Documents/NetBeansProjects/T5Ej24/src/t5ej24/Refrigerado.java</file>
+            <file>file:/C:/Users/alumno/Documents/NetBeansProjects/T5Ej24/src/t5ej24/ProductoRefrigerado.java</file>
+            <file>file:/C:/Users/alumno/Documents/NetBeansProjects/T5Ej24/src/t5ej24/ProductoCongelado.java</file>
             <file>file:/C:/Users/alumno/Documents/NetBeansProjects/T5Ej24/src/t5ej24/Producto.java</file>
+            <file>file:/C:/Users/alumno/Documents/NetBeansProjects/T5Ej24/src/t5ej24/ProductoFresco.java</file>
         </group>
     </open-files>
 </project-private>
