@@ -13,7 +13,7 @@ public class T5Ej20 {
     /**
      * @param args the command line arguments
      */
-    public static  byte pedirOpcion(){
+    public static byte pedirOpcion(){
         Scanner entradaMenu = new Scanner(System.in);
         System.out.println("Introduzca la opcion que desea: ");
         byte opcion = entradaMenu.nextByte();
@@ -30,8 +30,9 @@ public class T5Ej20 {
         System.out.println("1 - Crear cuenta vacia.\n2 - Crear cuenta con saldo inicial.\n3 - Ingresar dinero.\n4 - Sacar dinero.\n5 - Ver saldo.\n6 - Salir.");
     }
     
+    
     public static void opcionesMenu(){
-        Cuenta cuenta01 = null;
+        CuentaClave cuenta01 = null;
         byte opcionUsuario = 0; 
             do{
             try{
@@ -39,11 +40,11 @@ public class T5Ej20 {
                opcionUsuario = pedirOpcion();
                switch(opcionUsuario){
                 case 1:{
-                    cuenta01 = new Cuenta();
+                    cuenta01 = new CuentaClave(CuentaClave.pedirClave());
                     break;
                 }
                 case 2:{
-                    cuenta01 = new Cuenta(pedirCantidad());
+                    cuenta01 = new CuentaClave(CuentaClave.pedirClave(), pedirCantidad());
                     break;
                 }
 
