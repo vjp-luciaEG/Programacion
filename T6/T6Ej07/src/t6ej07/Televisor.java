@@ -65,7 +65,7 @@ public class Televisor implements ControlRemoto{
     @Override
     public void bajarVolumen() {
         if(encendido == true){
-            volumen = volumen - 1;
+            volumen--;
             System.out.println("Volumen: " + getVolumen());
         }
     }
@@ -73,7 +73,7 @@ public class Televisor implements ControlRemoto{
     @Override
     public void subirVolumen() {
         if(encendido == true){
-            volumen = volumen + 1;
+            volumen++;
             System.out.println("Volumen: " + getVolumen());
         }
     }
