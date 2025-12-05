@@ -17,7 +17,7 @@ public class Radio implements ControlRemoto{
     //Constructores
     public Radio() {
         encendido = false;
-        emisora = (float) 80.0;
+        emisora = 80.0f;
         volumen = 15;
     }
 
