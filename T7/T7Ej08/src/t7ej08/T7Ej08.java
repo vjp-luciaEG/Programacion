@@ -33,10 +33,10 @@ public class T7Ej08 {
     
     public static void mostrarArrayInverso(int [] vector){
         int numeroInverso = 0;
-        int divisor = 10000;
-        for(int i=0; i < vector.length; i++){
+        int divisor = 1;
+        for(int i=vector.length - 1; i>=0; i--){
             numeroInverso = numeroInverso + vector[i]*divisor;
-            divisor = divisor/10;
+            divisor = divisor*10;
         }
         System.out.println("El numero introducido escrito al reves es " + numeroInverso);
     }
