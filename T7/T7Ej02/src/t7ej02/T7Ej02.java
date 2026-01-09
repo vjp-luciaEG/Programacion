@@ -26,12 +26,20 @@ public class T7Ej02 {
             System.out.println("El valor de la posicion " + (i+1) + " es igual a " + vector[i]);  
         }
     }
+    
+    public static void intercambiarNumeros(int [] vector){
+        int aux = vector[1];
+        vector[1]= vector[3];
+        vector[3]= aux;
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         int[] vector = new int[7];
         rellenarVector(vector);
         mostrarVector(vector);
-        
+        intercambiarNumeros(vector);
+        mostrarVector(vector);
     }
     
 }
