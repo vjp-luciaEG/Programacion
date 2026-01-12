@@ -24,9 +24,9 @@ public class T7Ej08 {
     public static int[] rellenarArray(int numero){
         int[] vector = new int[5];
         
-        for(int i=0; i<vector.length; i++){
+        for(int i = vector.length - 1; i >= 0; i--){
             vector[i] = numero % 10;
-            numero = numero/10;
+            numero /= 10;
         }
         return vector;
     }
@@ -34,7 +34,7 @@ public class T7Ej08 {
     public static void mostrarArrayInverso(int [] vector){
         int numeroInverso = 0;
         int divisor = 1;
-        for(int i=vector.length - 1; i>=0; i--){
+        for(int i=0; i < vector.length; i++){
             numeroInverso = numeroInverso + vector[i]*divisor;
             divisor = divisor*10;
         }

@@ -37,7 +37,7 @@ public class T7Ej09 {
     public static int[] rellenarArray(int cifras){
         int[] vector = new int[cifras];
         
-        for(int i=0; i<vector.length; i++){
+        for(int i = vector.length - 1; i>=0; i--){
             vector[i] = numero % 10;
             numero = numero/10;
         }
@@ -47,7 +47,7 @@ public class T7Ej09 {
     public static void mostrarArrayInverso(int [] vector){
         int numeroInverso = 0;
         int divisor = 1;
-        for(int i=vector.length - 1; i>=0; i--){
+        for(int i = 0; i < vector.length; i++){
             numeroInverso = numeroInverso + vector[i]*divisor;
             divisor = divisor*10;
         }
