@@ -40,7 +40,7 @@ public class T7Ej15 {
     }
     
     public static void mostrarVentasInversa(int [] ventas, String[] meses){
-        for(int i = ventas.length - 1; i > 0; i--){
+        for(int i = ventas.length - 1; i >= 0; i--){
             System.out.println("En el mes de " + meses[i] + " las ventas fueron de " + ventas[i]);  
         }
     }
@@ -59,7 +59,7 @@ public class T7Ej15 {
         int sumaVentas = 0;
         
         for(int i=0; i < ventas.length; i++){
-            if(i%2==0){
+            if((i+1)%2==0){
                 sumaVentas = sumaVentas + ventas[i]; 
             }
         }
@@ -124,7 +124,7 @@ public class T7Ej15 {
                     break;
                 }
                 default: {
-                    System.out.println("Opcion no disponible");
+                    System.err.println("Opcion no disponible");
                 }
             }
         }while(opcion!=7);
