@@ -56,8 +56,10 @@ public class T7Ej10 {
         int[] vector = new int[10];
         
         rellenarVector(vector);
+        System.out.println("Se han generado los siguientes numeros: ");
         mostrarVector(vector);
         sustituirRepetidos(vector);
+        System.out.println("Sustituimos los elementos repetidos por un 0: " );
         mostrarVector(vector);
     }
     
