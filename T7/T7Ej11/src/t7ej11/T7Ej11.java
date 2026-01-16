@@ -15,24 +15,20 @@ public class T7Ej11 {
      */
     
     public static int [] rellenarVectorSinRepetir(int [] vector){
-        int i = 0;
-        
-        while (i < vector.length) {
-            int numero = (int) Math.floor(Math.random()*9);
+    
+        for(int i=0; i < vector.length;i++){
+            int numero = (int) Math.floor(Math.random()*10);
             boolean repetido = false;
-            int contador = 0;
-            // while con dos condiciones
-            while (i > contador && !repetido) {
-                if (vector[i] == numero) {
-                    repetido = true;
-                }
-                contador++;                 //EN DESARROLLO
+            int j = 0;
+            while (j < i || !repetido){
+                if (vector[j] == numero){
+                    repetido = true;   
+                }                                   //EN DESARROLLO
+                j++;   
             }
-
             if (!repetido) {
-                vector[i] = numero;
-                i++;
-            }
+                    vector[i] = numero;
+                }    
         }
         return vector;
     }   
