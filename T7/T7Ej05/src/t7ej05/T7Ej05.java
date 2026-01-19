@@ -45,7 +45,31 @@ public class T7Ej05 {
                     }
             }
         }
-        System.out.print("El mayor numero de la matriz es el " + matriz[0][0]);
+        System.out.println("El mayor numero de la matriz es el " + mayor);
+    }
+    
+    public static void mostrarMenor(int [][] matriz){
+        int menor = matriz[0][0];
+        
+        for(int i = 0; i < matriz.length; i++){   
+            for(int j = 0; j < matriz[i].length; j++){        //EN DESARROLLO      
+                    if(matriz[i][j] < menor){
+                        menor = matriz[i][j];
+                    }
+            }
+        }
+        System.out.println("El menor numero de la matriz es el " + menor);
+    }
+    
+    public static void mostrarSuma(int [][] matriz){
+        int suma = 0;
+        
+        for(int i = 0; i < matriz.length; i++){   
+            for(int j = 0; j < matriz[i].length; j++){        //EN DESARROLLO      
+                    suma += matriz[i][j];
+            }
+        }
+        System.out.println("La suma de todos los numeros es: " + suma);
     }
     public static void main(String[] args) {
         // TODO code application logic here
@@ -53,6 +77,8 @@ public class T7Ej05 {
         
         mostrarMatriz(introducirValoresMatriz(matriz));
         mostrarMayor(matriz);
+        mostrarMenor(matriz);
+        mostrarSuma(matriz);
         
     }
     
