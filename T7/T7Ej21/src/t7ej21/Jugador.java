@@ -54,17 +54,16 @@ public class Jugador {
                 System.out.println("Elige una columna: ");
                 j = entrada.nextInt();
 
-                for(int k = 0;k<3;k++){
-                    for(int l=0; l<3; l++){
-                        if(TresEnRaya[k][l] == 'X' || TresEnRaya[k][l] == 'O'){
-                            System.out.println("Posicion ocupada");
-                            entrada.nextLine();
-                        }
-                    }
+                if(TresEnRaya[i][j] == 'X' || TresEnRaya[i][j] == 'O'){
+                    System.out.println("Posicion ocupada");
+                    i=-1;
+                    j=-1;
                 }
+                 
             }catch(IndexOutOfBoundsException e){
-                entrada.nextLine();
                 System.out.println("La posicion no existe.");
+                i=-1;
+                j=-1;
             }
             
         }while((i<0 || i>2) && (j<0 || j>2));
@@ -81,14 +80,13 @@ public class Jugador {
             if ((TresEnRaya[i][0] == marca && TresEnRaya[i][1] == marca && TresEnRaya[i][2] == marca) ||
                 (TresEnRaya[0][i] == marca && TresEnRaya[1][i] == marca && TresEnRaya[2][i] == marca)) {
                 victoria = true;
-            }
+            }           
         }
-
+        
         if ((TresEnRaya[0][0] == marca && TresEnRaya[1][1] == marca && TresEnRaya[2][2] == marca) ||
             (TresEnRaya[0][2] == marca && TresEnRaya[1][1] == marca && TresEnRaya[2][0] == marca)) {
             victoria = true;
         }
-
         
         return victoria;
     }

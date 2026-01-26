@@ -26,60 +26,59 @@ public class T7Ej21 {
         System.out.println("-------------------------");
     }
     
-
-    public static boolean comprobarVictoria(char [][] TresEnRaya){
-        boolean victoria = false;
-        
-        for (int i = 0; i < 3; i++) {
-            if (TresEnRaya[i][0] != ' ' && TresEnRaya[i][0] == TresEnRaya[i][1] && TresEnRaya[i][1] == TresEnRaya[i][2]) {
-                victoria = true;
-            }
-        }
-
-        for (int i = 0; i < 3; i++) {
-            if (TresEnRaya[0][i] != ' ' &&
-                TresEnRaya[0][i] == TresEnRaya[1][i] &&
-                TresEnRaya[1][i] == TresEnRaya[2][i]) {
-                victoria = true;
-            }
-        }
-
-        if (TresEnRaya[0][0] != ' ' &&
-            TresEnRaya[0][0] == TresEnRaya[1][1] &&
-            TresEnRaya[1][1] == TresEnRaya[2][2]) {
-            victoria = true;
-        }
-
-        if (TresEnRaya[0][2] != ' ' &&
-            TresEnRaya[0][2] == TresEnRaya[1][1] &&
-            TresEnRaya[1][1] == TresEnRaya[2][0]) {
-            victoria = true;
-        }
-        
-        return victoria;
+    public static void mostrarMenu(){
+        System.out.println("==== MENU ====");
+        System.out.println("1-Jugar.");
+        System.out.println("2-Salir.");
     }
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        char[][] TresEnRaya = new char[3][3];
+        Scanner entrada = new Scanner(System.in);
         
         Jugador jugador1 = new Jugador("Jugador1",'X');
         Jugador jugador2 = new Jugador("Jugador2", 'O');
         
-        boolean victoria = false;
         
-        mostrarTablero(TresEnRaya);
-        do {
-
-            jugador1.eleccionJugador(TresEnRaya);
-            mostrarTablero(TresEnRaya);
-            victoria = jugador1.comprobarVictoria(TresEnRaya);
-            jugador2.eleccionJugador(TresEnRaya);
-            mostrarTablero(TresEnRaya);
-            victoria = jugador2.comprobarVictoria(TresEnRaya);
-        } while(!victoria);
-      
-        System.out.println("VICTORIA");
-     
-    }
+        byte opcion;
+        do{
+            mostrarMenu();
+            System.out.println("Introduzca una opcion:");
+            opcion = entrada.nextByte();
+            switch(opcion){
+                case 1:{
+                    char[][] TresEnRaya = new char[3][3];
+                    byte contador=0;
+                    boolean victoria1 = false, victoria2 = false;
+                    mostrarTablero(TresEnRaya);
+                    while(!victoria1 && !victoria2 && contador <=8) {
+                        jugador1.eleccionJugador(TresEnRaya);
+                        mostrarTablero(TresEnRaya);
+                        victoria1 = jugador1.comprobarVictoria(TresEnRaya);
+                        if(!victoria1){
+                            jugador2.eleccionJugador(TresEnRaya);
+                            mostrarTablero(TresEnRaya);
+                            victoria2 = jugador2.comprobarVictoria(TresEnRaya);
+                            contador++;
+                        }
+                        contador++;
+                    }
+                    if(!victoria1 && !victoria2){
+                        System.out.println("EMPATE");
+                    } else if(victoria1){
+                        System.out.println("HA GANADO EL JUGADOR 1");
+                    } else if(victoria2){
+                        System.out.println("HA GANADO EL JUGADOR 2");
+                    }
+                    break;
+                }
+                case 2:
+                    System.err.println("Exit");
+                    break;
+                default:
+                    System.err.println("Opcion no disponible.");
+            }
+        }while(opcion!=2);
+    }    
     
 }
