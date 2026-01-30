@@ -52,10 +52,12 @@ public class T7Ej21 {
                     boolean victoria1 = false, victoria2 = false;
                     mostrarTablero(TresEnRaya);
                     while(!victoria1 && !victoria2 && contador <=8) {
+                        System.out.println("Turno Jugador 1.");
                         jugador1.eleccionJugador(TresEnRaya);
                         mostrarTablero(TresEnRaya);
                         victoria1 = jugador1.comprobarVictoria(TresEnRaya);
                         if(!victoria1){
+                            System.out.println("Turno Jugador 2.");
                             jugador2.eleccionJugador(TresEnRaya);
                             mostrarTablero(TresEnRaya);
                             victoria2 = jugador2.comprobarVictoria(TresEnRaya);
