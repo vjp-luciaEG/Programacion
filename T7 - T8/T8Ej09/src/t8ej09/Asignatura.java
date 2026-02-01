@@ -18,7 +18,12 @@ public class Asignatura {
         nombre = "";
         nota = 0F;
     }
-
+    
+    public Asignatura(String nombre) {
+        this.nombre = nombre;
+        this.nota = 0F;
+    }
+        
     public Asignatura(String nombre, float nota) {
         this.nombre = nombre;
         this.nota = nota;
@@ -40,27 +45,6 @@ public class Asignatura {
         this.nota = nota;
     }
     
-    public static double [][] rellenarNotas(Alumno[] alumnos){
-        Scanner entrada = new Scanner(System.in);
-        
-        double nota = 0;
-        
-        //Recorremos cada posicion de la combinacion de los arrays alumnos[i] y asignaturas[j]
-        for(int i = 0; i < alumnos.length; i++){
-            System.out.println("Introduce las notas de " + alumnos[i] + ":"); //Posicion del alumno
-            for(int j = 0; j < asignaturas.length; j++){
-                do{
-                    System.out.println(asignaturas[j] + ":");
-                    nota = entrada.nextDouble();    //Introducimos la nota de cada asignatura del alumno[i]
-                    if(nota < 0 || nota > 10){
-                        System.out.println("Nota invalida.");  //Controlamos el rango de la nota 0-10
-                    }
-                }while(nota<0 || nota>10);
-                notas[i][j]= nota; //Introducimos las notas de cada asignatura de un alumno en el array notas[][]
-            }
-        }
-        return notas;
-    }
     
     @Override
     public String toString() {
