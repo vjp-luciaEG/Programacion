@@ -85,6 +85,12 @@ public class Alumno{
         return suspensos;
     }
     
+    public void mostrarNotasAlumno(){
+        System.out.println("\nAlumno: " + nombre);
+            for (Asignatura a : asignatura) {
+                System.out.println(a.getNombre() + ": " + a.getNota());
+            }
+    }
     
     @Override
     public String toString() {

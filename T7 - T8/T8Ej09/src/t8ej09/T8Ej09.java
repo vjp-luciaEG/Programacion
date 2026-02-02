@@ -16,10 +16,7 @@ public class T8Ej09 {
     
     public static void mostrarNotas(Alumno[] alumnos) {
         for (Alumno alumno : alumnos) {
-            System.out.println("\nAlumno: " + alumno.getNombre());
-            for (Asignatura a : alumno.getAsignatura()) {
-                System.out.println(a.getNombre() + ": " + a.getNota());
-            }
+            alumno.mostrarNotasAlumno();
         }
     }
     
@@ -78,7 +75,6 @@ public class T8Ej09 {
                 }
                 case 2:{
                    mostrarNotas(alumno);
-                    System.out.println(alumno[0]);
                    break;
                 }
                 case 3:{
