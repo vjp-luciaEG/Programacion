@@ -12,12 +12,14 @@ import java.util.Scanner;
  * @author alumno
  */
 public class Empleado {
+
     private String nombre;
     private int horasTrabajadas;
     private float tarifaPorHora;
 
+    //Constructores
     public Empleado() {
-        nombre="";
+        nombre = "";
         horasTrabajadas = 0;
         tarifaPorHora = 2.5F;
     }
@@ -28,6 +30,7 @@ public class Empleado {
         this.tarifaPorHora = tarifaPorHora;
     }
 
+    //Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -51,45 +54,45 @@ public class Empleado {
     public void setTarifaPorHora(float tarifaPorHora) {
         this.tarifaPorHora = tarifaPorHora;
     }
-    
-    public String introducirNombre(){
+
+    //Metodos para introducir datos por pantalla
+    public String introducirNombre() {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Introduzca el nombre del empleado: ");
         this.nombre = entrada.nextLine();
         return nombre;
     }
-    
-    public int introducirHoras(){
-        Scanner entrada = new Scanner(System.in);
-        do{
-                System.out.println("Cuantas horas trabajo este mes? ");
 
-                try{
-                    this.horasTrabajadas = entrada.nextInt();
-                } 
-                catch(InputMismatchException error) {
-                    System.out.println(error);
-                    System.out.println("Dato erroneo. Introducir numero entero.");
-                }
-                finally {
-                    entrada.nextLine();
-                }
-            } while(this.horasTrabajadas<0);
+    public int introducirHoras() {
+        Scanner entrada = new Scanner(System.in);
+        do {
+            System.out.println("Cuantas horas trabajo este mes? ");
+
+            try {
+                this.horasTrabajadas = entrada.nextInt();
+            } catch (InputMismatchException error) {
+                System.out.println(error);
+                System.out.println("Dato erroneo. Introducir numero entero.");
+            } finally {
+                entrada.nextLine();
+            }
+        } while (this.horasTrabajadas < 0);
         return horasTrabajadas;
     }
-    
-    public float introducirTarifa(){
+
+    public float introducirTarifa() {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Cual es su tarifa por hora de trabajo?  ");
         this.tarifaPorHora = entrada.nextFloat();
-        
+
         return tarifaPorHora;
     }
-    
-    public void calcularSueldoBruto(){
+
+    //Otros metodos
+    public void calcularSueldoBruto() {
         double sueldoBruto;
-        
-        if(horasTrabajadas <= 40){
+
+        if (horasTrabajadas <= 40) {
             sueldoBruto = horasTrabajadas * tarifaPorHora;
         } else {
             int extras = horasTrabajadas - 40;
@@ -98,11 +101,11 @@ public class Empleado {
 
         System.out.println(nombre + " trabajo " + horasTrabajadas + " horas, cobra " + tarifaPorHora + " euros la hora.\nSueldo bruto: " + sueldoBruto);
     }
-    
+
+    //Mostrar datos
     @Override
     public String toString() {
         return "Empleado{" + "nombre=" + nombre + ", horasTrabajadas=" + horasTrabajadas + ", tarifaPorHora=" + tarifaPorHora + '}';
     }
-    
-    
+
 }
