@@ -103,6 +103,7 @@ public class T8Ej12 {
         //Menu de opciones
         do {
             mostrarMenu();
+            System.out.println("Introduzca una opcion:");
             opcion = entrada.nextInt();
 
             switch (opcion) {

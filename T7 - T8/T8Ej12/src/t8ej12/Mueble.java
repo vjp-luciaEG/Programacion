@@ -54,7 +54,6 @@ public class Mueble {
         Scanner entrada = new Scanner(System.in);
         System.out.print("Introduzca el precio: ");
         this.precio = entrada.nextDouble();
-        entrada.nextLine(); // limpiar buffer
         return this.precio;
     }
 
