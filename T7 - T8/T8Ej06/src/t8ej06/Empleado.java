@@ -4,6 +4,9 @@
  */
 package t8ej06;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author alumno
@@ -48,15 +51,52 @@ public class Empleado {
     public void setTarifaPorHora(float tarifaPorHora) {
         this.tarifaPorHora = tarifaPorHora;
     }
+    
+    public String introducirNombre(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Introduzca el nombre del empleado: ");
+        this.nombre = entrada.nextLine();
+        return nombre;
+    }
+    
+    public int introducirHoras(){
+        Scanner entrada = new Scanner(System.in);
+        do{
+                System.out.println("Cuantas horas trabajo este mes? ");
+
+                try{
+                    this.horasTrabajadas = entrada.nextInt();
+                } 
+                catch(InputMismatchException error) {
+                    System.out.println(error);
+                    System.out.println("Dato erroneo. Introducir numero entero.");
+                }
+                finally {
+                    entrada.nextLine();
+                }
+            } while(this.horasTrabajadas<0);
+        return horasTrabajadas;
+    }
+    
+    public float introducirTarifa(){
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Cual es su tarifa por hora de trabajo?  ");
+        this.tarifaPorHora = entrada.nextFloat();
+        
+        return tarifaPorHora;
+    }
+    
     public void calcularSueldoBruto(){
-        double sueldoBruto = horasTrabajadas * tarifaPorHora;
+        double sueldoBruto;
         
-        if(horasTrabajadas > 40){
-            tarifaPorHora += tarifaPorHora/2;
-            sueldoBruto += tarifaPorHora * (horasTrabajadas - 40);
-        } 
-        
-        System.out.println(nombre + "\nSueldo bruto:" + sueldoBruto);
+        if(horasTrabajadas <= 40){
+            sueldoBruto = horasTrabajadas * tarifaPorHora;
+        } else {
+            int extras = horasTrabajadas - 40;
+            sueldoBruto = (40 * tarifaPorHora) + (extras * tarifaPorHora * 1.5);
+        }
+
+        System.out.println(nombre + " trabajo " + horasTrabajadas + " horas, cobra " + tarifaPorHora + " euros la hora.\nSueldo bruto: " + sueldoBruto);
     }
     
     @Override

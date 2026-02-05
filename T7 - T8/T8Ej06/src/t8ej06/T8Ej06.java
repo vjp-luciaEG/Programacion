@@ -4,6 +4,9 @@
  */
 package t8ej06;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author alumno
@@ -13,17 +16,63 @@ public class T8Ej06 {
     /**
      * @param args the command line arguments
      */
+    public static int elegirLongitud(){
+        Scanner entrada = new Scanner(System.in);
+        int longitud = 0;
+        do{
+            System.out.println("Cuantos empleados desea introducir? ");
+            
+            try{
+                longitud = entrada.nextInt();
+            } 
+            catch(InputMismatchException e) {
+                System.out.println(e);
+                System.out.println("Dato erroneo. Introducir numero entero.");
+            }
+            finally {
+                entrada.nextLine();
+            }
+     
+        } while(longitud<0);
+        
+        return longitud;
+    }
+    
+    public static void introducirEmpleados(Empleado[] empleado){
+        for(int i = 0; i < empleado.length; i++){
+
+            System.out.println("Empleado " + (i+1));
+
+            Empleado e = new Empleado();
+
+            String nombre = e.introducirNombre();
+            int horas = e.introducirHoras();
+            float tarifa = e.introducirTarifa();
+
+            empleado[i] = new Empleado(nombre, horas, tarifa);
+        }
+    }
+    
+    public static void mostrarSueldosBrutos(Empleado[] empleado){
+       for(Empleado e:empleado){
+           e.calcularSueldoBruto();
+       }
+    }
+    
+    public static void mostrarDatosEmpleados(Empleado[] empleado){
+       for(Empleado e:empleado){
+           System.out.println(e);
+       }
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
-        Empleado[] empleado = new Empleado[2];
+        Empleado[] empleado = new Empleado[elegirLongitud()];
         
-        empleado[0] = new Empleado("Lucia", 60, 2.5F);
-        empleado[1] = new Empleado("Angel", 30, 2.5F);
+        introducirEmpleados(empleado);
+        mostrarSueldosBrutos(empleado);
          
-        System.out.println(empleado[0]);
-        empleado[0].calcularSueldoBruto();
-        System.out.println(empleado[1]);
-        empleado[1].calcularSueldoBruto();
+      
     }
     
 }
