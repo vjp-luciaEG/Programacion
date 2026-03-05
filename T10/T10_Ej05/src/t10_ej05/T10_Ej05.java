@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package t10_ej05;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
