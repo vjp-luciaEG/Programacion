@@ -37,6 +37,13 @@ public class T10Ej14 {
     public static void introducirAlumnoYNotas(ArrayList<Alumno> alumnos){
         alumnos.add(Alumno.introducirAlumno());
     }
+    
+    public static void mostrarAlumnos(ArrayList<Alumno> alumnos){
+        for(Alumno a: alumnos){
+            System.out.println(a);
+            a.mostrarAsignaturas();
+        }
+    }
     public static void main(String[] args) {
         // TODO code application logic here
         ArrayList<Alumno> alumnos = new ArrayList<>();
@@ -44,7 +51,6 @@ public class T10Ej14 {
         int opcion = 0;
         do{
             mostrarMenu();
-            System.out.println("Introduce una opcion: ");
             opcion = introducirOpcion();
             switch (opcion) {
                 case 1:{
@@ -52,7 +58,7 @@ public class T10Ej14 {
                     break;
                 }
                 case 2: {
-                    
+                    mostrarAlumnos(alumnos);
                     break;
                 }   
                 case 3: {

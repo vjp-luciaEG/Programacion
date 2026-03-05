@@ -76,9 +76,16 @@ public class Alumno {
        Alumno alumno = new Alumno(introducirNombre(), introducirAsignaturas());
        return alumno;
     }
+    
+    public void mostrarAsignaturas(){
+        for(Asignatura a : asignaturas){
+            System.out.println(a);
+        }
+    }
+    
     @Override
     public String toString() {
-        return "Alumno{" + "nombre=" + nombre + ", asignaturas=" + asignaturas + '}';
+        return "Alumno:\n" + "Nombre=" + nombre;
     }
     
     

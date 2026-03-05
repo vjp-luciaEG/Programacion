@@ -52,6 +52,7 @@ public class Asignatura {
         float nota = entrada.nextFloat();
         return nota;
     }
+    
     @Override
     public String toString() {
         return "Asignatura{" + "nombre=" + nombre + ", nota=" + nota + '}';
