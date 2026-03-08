@@ -10,9 +10,11 @@ import java.util.Scanner;
  */
 public class Asignatura {
     
+    //Atributos
     private String nombre;
     private float nota;
 
+    //Constructores
     public Asignatura() {
         nombre = "";
         nota = 0F;
@@ -23,6 +25,7 @@ public class Asignatura {
         this.nota = nota;
     }
 
+    //Getters/Setters
     public String getNombre() {
         return nombre;
     }
@@ -39,6 +42,7 @@ public class Asignatura {
         this.nota = nota;
     }
     
+    //Introducir atributos 
     public static String introducirNombre(){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Nombre de asignatura: ");
@@ -53,6 +57,7 @@ public class Asignatura {
         return nota;
     }
     
+    //Mostrar datos
     @Override
     public String toString() {
         return "Asignatura{" + "nombre=" + nombre + ", nota=" + nota + '}';
