@@ -46,18 +46,52 @@ public class T10Ej15 {
             }
         }
     }
-    
+
     public static void mostrarEmpleadosPorA(ArrayList<Empresa> empresas) {
         if (empresas.isEmpty()) {                    //Control de excepciones
             System.err.println("Lista vacia.");
             introducirEmpresas(empresas);
         } else {
             for (Empresa em : empresas) {
-                em.mostrarListaEmpleadosPorA();
+                em.mostrarListaEmpleadosPorA();     //Metodo de la clase Empresa
             }
         }
     }
 
+    public static void mostrarListaEmpleadosPorSueldo(ArrayList<Empresa> empresas) {
+
+        if (empresas.isEmpty()) {                    //Control de excepciones
+            System.err.println("Lista vacia.");
+            introducirEmpresas(empresas);
+        } else {
+            ArrayList<Empleado> lista = new ArrayList<>();      //Creamos un nuevo ArrayList para introducir todos los Empleados de todas las Empresas
+
+            for (Empresa emp : empresas) {                       //Recorremos las listas de Empleados de  las Empresas
+                for (Empleado e : emp.getListaEmpleados()) {        //Añadimos cada Empleado de la lista al ArrayList
+                    lista.add(e);
+                }
+            }
+
+            for (int i = 0; i < lista.size() - 1; i++) {                 //Ordenacion por sueldo con el metodo burbuja
+                for (int j = 0; j < lista.size() - 1 - i; j++) {
+                    if (lista.get(j).getSueldo() < lista.get(j + 1).getSueldo()) {
+
+                        Empleado empleado = lista.get(j);           //Variable intermedia
+                        
+                        lista.set(j, lista.get(j + 1));        //Intercambio de posiciones con el metodo set()
+                        lista.set(j + 1, empleado);
+
+                    }
+                }
+            }
+
+            for (Empleado e : lista) {                   //Mostrar datos del ArrayList de Empleados ordenados por sueldo
+                System.out.println(e);
+            }
+        }
+    }
+    
+    //Introducir Empresas en el ArrayList pasado por parametro
     public static void introducirEmpresas(ArrayList<Empresa> empresas) {
         Scanner entrada = new Scanner(System.in);
 
@@ -65,21 +99,23 @@ public class T10Ej15 {
         String respuesta = "No";
 
         do {
-            em = new Empresa(Empresa.introducirNombre(), Empresa.introducirEmpleados());
+            em = new Empresa(Empresa.introducirNombre(), Empresa.introducirEmpleados());    //Crear y añadir Empresa en el ArrayList
             empresas.add(em);
-            System.out.println("Desea introducir mas empresas (Si | No)");
+            
+            System.out.println("Desea introducir mas empresas (Si | No)");      //Control del bucle para añadir mas Empresas
             respuesta = entrada.nextLine();
-        } while (respuesta.equalsIgnoreCase("Si"));
+        } while (respuesta.equalsIgnoreCase("Si"));                     //Detenemos el bucle con cualquier respuesta distinta de "Si"
     }
 
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<Empresa> empresas = new ArrayList<>();
+        ArrayList<Empresa> empresas = new ArrayList<>();      
 
         int opcion = 0;
         do {
             mostrarMenu();
             opcion = introducirOpcion();
+            
             switch (opcion) {
                 case 1: {
                     introducirEmpresas(empresas);
@@ -94,7 +130,7 @@ public class T10Ej15 {
                     break;
                 }
                 case 4: {
-
+                    mostrarListaEmpleadosPorSueldo(empresas);
                     break;
                 }
                 case 5: {

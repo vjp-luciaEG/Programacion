@@ -12,9 +12,11 @@ import java.util.Scanner;
  */
 public class Empleado {
     
+    //Atributos
     private String nombreEmpleado;
     private int sueldo;
 
+    //Constructores
     public Empleado() {
         nombreEmpleado = "";
         sueldo = 0;
@@ -25,6 +27,7 @@ public class Empleado {
         this.sueldo = sueldo;
     }
 
+    //Getters/Setters
     public String getNombreEmpleado() {
         return nombreEmpleado;
     }
@@ -41,6 +44,7 @@ public class Empleado {
         this.sueldo = sueldo;
     }
 
+    //Introducir atributos por usuario
     public static String introducirNombre(){
         Scanner entrada = new Scanner(System.in);
         
@@ -59,6 +63,7 @@ public class Empleado {
         return sueldo;
     }
     
+    //Mostrar datos
     @Override
     public String toString() {
         return "Empleado{" + "nombreEmpleado=" + nombreEmpleado + ", sueldo=" + sueldo + '}';

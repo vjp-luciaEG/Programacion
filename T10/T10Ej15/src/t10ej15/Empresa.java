@@ -5,6 +5,7 @@
 package t10ej15;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -13,9 +14,11 @@ import java.util.Scanner;
  */
 public class Empresa {
     
+    //Atributos
     private String nombreEmpresa;
     private ArrayList<Empleado> listaEmpleados;
 
+    //Constructores
     public Empresa() {
         nombreEmpresa = "";
         listaEmpleados = new ArrayList<>();
@@ -29,6 +32,7 @@ public class Empresa {
         this.listaEmpleados = listaEmpleados;
     }
 
+    //Getters/Setters
     public String getNombreEmpresa() {
         return nombreEmpresa;
     }
@@ -45,6 +49,7 @@ public class Empresa {
         this.listaEmpleados = listaEmpleados;
     }
 
+    //Introducir datos por el usuario
     public static String introducirNombre(){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Nombre de la empresa: ");
@@ -62,11 +67,13 @@ public class Empresa {
         do{
             contador++;
             System.out.println("Empleado " + contador);
-            Empleado e = new Empleado(Empleado.introducirNombre(), Empleado.introducirSueldo());
+            
+            Empleado e = new Empleado(Empleado.introducirNombre(), Empleado.introducirSueldo());        //Crear y añadir empleado
             empleados.add(e);
-            System.out.println("Desea añadir mas empleados (Si | No)");
-            respuesta = entrada.nextLine();
-        } while(respuesta.equalsIgnoreCase("Si"));
+            
+            System.out.println("Desea añadir mas empleados (Si | No)");         //Control del bucle para añadir mas empleados
+            respuesta = entrada.nextLine();                                        
+        } while(respuesta.equalsIgnoreCase("Si"));                      //Detenemos el bucle con cualquier respuesta distinta de "Si"
         
         return empleados;
     }
