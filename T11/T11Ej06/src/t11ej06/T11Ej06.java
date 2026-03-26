@@ -18,6 +18,7 @@ public class T11Ej06 {
      * @param args the command line arguments
      */
     
+    //Metodo para introducir opcion de menu
     public static int introducirOpcion() {
         Scanner entrada = new Scanner(System.in);
 
@@ -26,6 +27,7 @@ public class T11Ej06 {
         return opcion;
     }
     
+    //Mostrar menu
     public static void mostrarMenu(){
         System.out.println("=== MENU ===");
         System.out.println("1-Introducir donacion");

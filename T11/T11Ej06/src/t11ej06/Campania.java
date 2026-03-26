@@ -12,9 +12,11 @@ import java.util.TreeSet;
  */
 public class Campania {
     
+    //Atributos
     private Set<Donacion> conjuntoDonaciones;
     private String nombreCampania;
 
+    //Constructores
     public Campania() {
         conjuntoDonaciones = new TreeSet<>();
         nombreCampania = "";
@@ -25,6 +27,7 @@ public class Campania {
         this.nombreCampania = nombreCampania;
     }
 
+    //Getters/Setters
     public Set<Donacion> getConjuntoDonaciones() {
         return conjuntoDonaciones;
     }
@@ -41,11 +44,13 @@ public class Campania {
         this.nombreCampania = nombreCampania;
     }
     
+    //Metodo para introducir una donacion al conjuntoDonaciones
     public void aniadirDonacion(){
         System.out.println("");
         conjuntoDonaciones.add(new Donacion(Donacion.introducirNombre(), Donacion.introducirCantidad())); 
     }
     
+    //Metodo para mostrar el conjunto de Donaciones
     public void mostrarDonaciones(){
         System.out.println("DONACIONES");
         for(Donacion d : conjuntoDonaciones){
@@ -53,6 +58,7 @@ public class Campania {
         }
     }
     
+     //Metodo que calcula y muestra la cantidad total de dinero recaudado en el conjunto de Donaciones de una campaña
     public void mostrarTotalDineroDonaciones(){
         double cantidadTotal = 0;
         System.out.println("DINERO RECAUDADO");
@@ -62,6 +68,7 @@ public class Campania {
         System.out.println(cantidadTotal);
     }
     
+    //Metodo que muestra los datos de las donaciones con el nombre igual que el introducido por parametro
     public void mostrarDonacionesPorNombre(String nombre){
         System.out.println("BUSQUEDA...");
         for(Donacion d : conjuntoDonaciones){
@@ -70,7 +77,7 @@ public class Campania {
             }
         }
     }
-    
+    //Metodo que muestra el numero de Donaciones que hay en el conjuntoDonaciones de una campaña
     public void mostrarNumeroDonaciones(){
         System.out.println("NUMERO DE DONACIONES: " + conjuntoDonaciones.size());
     }

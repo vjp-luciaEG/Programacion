@@ -11,9 +11,11 @@ import java.util.Scanner;
  */
 public class Donacion implements Comparable<Donacion>{
     
+    //Atributos
     private String nombreDonante;
     private double cantidad;
 
+    //Constructores
     public Donacion() {
         nombreDonante = "";
         cantidad = 0;
@@ -24,6 +26,7 @@ public class Donacion implements Comparable<Donacion>{
         this.cantidad = cantidad;
     }
 
+    //Getters/Setters
     public String getNombreDonante() {
         return nombreDonante;
     }
@@ -40,6 +43,7 @@ public class Donacion implements Comparable<Donacion>{
         this.cantidad = cantidad;
     }
     
+    //Metodos para introducir datos por pantalla
     public static String introducirNombre(){
         Scanner entrada = new Scanner(System.in);
         
@@ -56,6 +60,7 @@ public class Donacion implements Comparable<Donacion>{
         return cantidad;
     }
 
+    //Metodo de la interfaz Comparable necesario para el orden del TreeSet 
     @Override
     public int compareTo(Donacion o) {
         if(this.cantidad > o.getCantidad()) {
