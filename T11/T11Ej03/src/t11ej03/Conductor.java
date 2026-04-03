@@ -44,6 +44,7 @@ public class Conductor {
         this.nombre = nombre;
     }
 
+    //Metodos para introducir valores de atributos de la clase Conductor
     public static String introducirDni(){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Introduzca el dni:");
@@ -52,7 +53,7 @@ public class Conductor {
         return texto;
     }
     
-    public static String introducirString(){
+    public static String introducirNombre(){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Introduzca el nombre:");
         String texto = entrada.nextLine();

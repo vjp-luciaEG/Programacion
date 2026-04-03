@@ -38,6 +38,7 @@ public class T11Ej06 {
         System.out.println("6-Ordenar donaciones");
         System.out.println("7-Salir");
     }
+    
     public static void main(String[] args) {
         // TODO code application logic here
         Campania c = new Campania();

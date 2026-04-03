@@ -4,6 +4,7 @@
  */
 package t11ej03;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -22,7 +23,12 @@ public class Autobus {
         matricula = "";
         conductores = new HashMap<>();
     }
-
+    
+    public Autobus(String matricula) {
+        this.matricula = matricula;
+        this.conductores = new HashMap<>();
+    }
+    
     public Autobus(String matricula, Map<String, String> conductores) {
         this.matricula = matricula;
         this.conductores = conductores;
@@ -45,6 +51,7 @@ public class Autobus {
         this.conductores = conductores;
     }
 
+    //Metodo para introdcir datos de Matricula
     public static String introducirMatricula(){
         Scanner entrada = new Scanner(System.in);
         
@@ -57,9 +64,33 @@ public class Autobus {
     //Metodo para añadir un Conductor al conjunto
     public void introducirConductor(){
         System.out.println("Introduciendo conductor...");
-        conductores.put(Conductor.introducirDni(), Conductor.introducirString());
+        conductores.put(Conductor.introducirDni(), Conductor.introducirNombre());
     }
     
+    //Metodo que busca el Conductor del Autobus con el dni igual al introducido por parametro
+    public boolean buscarConductor(String claveUsuario){
+        Iterator<String> it = conductores.keySet().iterator();
+        
+        boolean encontrado = false;
+        
+        while(it.hasNext() && !encontrado){
+            String clave = it.next();
+           if(clave.equalsIgnoreCase(claveUsuario)){
+               System.out.println("DNI: " + clave + " Nombre: " + conductores.get(clave));
+               encontrado = true;
+           }
+        }
+        return encontrado;
+    }
+    
+    //Metodo que suma los conductores de un Autobus
+    public int sumarConductor(){
+        int i = 0;
+        for(String clave : conductores.keySet()){
+           i++;
+        }
+        return i;
+    }
     
     //Mostrar datos
     @Override
