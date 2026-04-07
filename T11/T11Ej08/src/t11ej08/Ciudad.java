@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package t11ej08;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
@@ -62,7 +63,19 @@ public class Ciudad {
         
         return sedes;
     }
-    
+    public boolean buscarSedes(String nombre){
+        Iterator<Sede> it = sedes.iterator();
+        
+        boolean encontrado = false;
+        
+        while(it.hasNext() && !encontrado){
+            Sede sede = it.next();
+           if(sede.getNombre().equalsIgnoreCase(nombre)){
+               encontrado = true;
+           }
+        }
+        return encontrado;
+    }
     //Metodo para mostrar el conjunto de Sedes
     public void mostrarSedes(){
         System.out.println("SEDES");
