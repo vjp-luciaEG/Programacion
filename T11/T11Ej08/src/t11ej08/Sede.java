@@ -44,6 +44,7 @@ public class Sede implements Comparable<Sede>{
         this.ingresoAnual = ingresoAnual;
     }
 
+    //Metodos para introducir valores a atributos
     public static String introducirNombre(){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Introduzca el nombre:");
@@ -60,6 +61,7 @@ public class Sede implements Comparable<Sede>{
         return ingresos;
     }
     
+    //Metodo interfaz Comparable para orden del TreeSet por mayor valor de ingresos
     @Override
     public int compareTo(Sede o) {
         if(this.ingresoAnual > o.getIngresoAnual()) {
@@ -70,7 +72,6 @@ public class Sede implements Comparable<Sede>{
             return 0;
         }  
     }
-
     
     @Override
     public String toString() {

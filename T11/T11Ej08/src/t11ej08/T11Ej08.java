@@ -5,8 +5,8 @@
 package t11ej08;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -18,29 +18,60 @@ public class T11Ej08 {
     /**
      * @param args the command line arguments
      */
+    
+    //Metodo que muestra las Sedes ordenadas por mayor numero de ingresos
+    public static void mostrarSedesMayorAMenor(ArrayList<Ciudad> ciudades){
+        Set<Sede> sedesOrdenadas = new TreeSet<>(); //Conjunto ordenado por mayor valor de ingresos de Sede
+        
+        for(Ciudad c : ciudades){               //Introducimos todas las sedes en el TreeSet
+            for(Sede s: c.getSedes()){
+                sedesOrdenadas.add(s);       
+            }
+        }
+        
+        System.out.println(sedesOrdenadas);
+    }
+    
+    //Metodo que busca la ciudad con el nombre similar al introducido por parametro para introducir mas sedes a su conjunto
     public static void buscarCiudad(ArrayList<Ciudad> ciudades, String nombre){
         int i = 0;
         boolean encontrado = false;
         
-        while(i<ciudades.size() && !encontrado){
-           if(ciudades.get(i).getNombre().equalsIgnoreCase(nombre)){
+        while(i<ciudades.size() && !encontrado){        //Busqueda
+           if(ciudades.get(i).getNombre().equalsIgnoreCase(nombre)){ 
                encontrado = true;
-               ciudades.get(i).aniadirSede();
+               ciudades.get(i).introducirSede();  //Metodo de la clase Ciudad para añadir sedes al conjunto
            }
            i++;
         }
-    }
-    
-    public static void buscarNombreSede(ArrayList<Ciudad> ciudades){
-        boolean encontrado = false;
         
-        for(Ciudad c: ciudades){
-            encontrado = c.buscarSedes(Sede.introducirNombre());
-            if(encontrado){
-                System.out.println(c.getNombre());
-            }
+        if(!encontrado){
+            System.err.println("La ciudad no existe");
         }
     }
+    
+    //Metodo que busca y muestra todas las sedes con el nombre similar al introducido por el usuario
+    public static void buscarNombreSede(ArrayList<Ciudad> ciudades){
+        boolean encontrado = false;
+        String nombreSede = Sede.introducirNombre();
+        int i = 0;
+        
+        for(Ciudad c: ciudades){  
+            encontrado = c.buscarSedes(nombreSede); //Metodo de la clase Ciudad que compara los nombres de las sedes de la Ciudad y devuelve true o false
+            if(encontrado){
+                System.out.println(c.getNombre());
+                i++;
+            }
+        }
+        
+        if(!encontrado && i == 0){
+            System.err.println("No se han encontrado sedes");
+        } else {
+            System.out.println("Se han encontrado " + i + " sedes");
+        }
+    }
+    
+    //Metodo que calcula la media de ingresos de todos los conjuntos de sedes de las ciudades
     public static double calcularMediaIngresos(ArrayList<Ciudad> ciudades){
         double suma = 0;
         int numSedes = 0;
@@ -55,6 +86,7 @@ public class T11Ej08 {
         return media;
     }
     
+    //Metodo que muestra las sedes con ingresos superiores a la media
     public static void mostrarSedesMediaSuperior(ArrayList<Ciudad> ciudades, double media){
         for(Ciudad c: ciudades){
             for(Sede s : c.getSedes()){
@@ -65,6 +97,7 @@ public class T11Ej08 {
         }
     }
     
+    //Metodo para introducir opcion del menu
     public static int introducirOpcion() {
         Scanner entrada = new Scanner(System.in);
 
@@ -85,19 +118,21 @@ public class T11Ej08 {
         System.out.println("7-Salir");
     }
     
+    //Metodo para mostrar el ArrayList
     public static void mostrarCiudades(ArrayList<Ciudad> ciudades){
         for(Ciudad c : ciudades){
             System.out.println(c);
         }
     }
     
+    //Metodo para insertar una Ciudad al ArrayList
     public static void insertarCiudad (ArrayList<Ciudad> ciudades){
         ciudades.add(new Ciudad(Sede.introducirNombre(), Ciudad.aniadirSede()));
     }
     
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<Ciudad> ciudades = new ArrayList<>();
+        ArrayList<Ciudad> ciudades = new ArrayList<>();  //Estructura dinamica
         
         int opcion;
         do {                        //Menu de opciones
@@ -125,7 +160,7 @@ public class T11Ej08 {
                     break;
                 }
                 case 6: {
-                
+                    mostrarSedesMayorAMenor(ciudades);
                     break;
                 }
                 case 7: {

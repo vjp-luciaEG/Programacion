@@ -46,7 +46,7 @@ public class Ciudad {
         this.sedes = sedes;
     }
 
-    //Metodo para introducir una donacion al conjuntoDonaciones
+    //Metodos para introducir Sede al conjunto
     public static Set<Sede> aniadirSede(){
         Scanner entrada = new Scanner(System.in);
         Set<Sede> sedes = new TreeSet<>();
@@ -63,12 +63,30 @@ public class Ciudad {
         
         return sedes;
     }
+    
+    public Set<Sede> introducirSede(){
+        Scanner entrada = new Scanner(System.in);
+        
+        String respuesta;
+       
+        do {
+            System.out.println("SEDES");
+            
+            sedes.add(new Sede(Sede.introducirNombre(), Sede.introducirIngresos()));  //Introducimos el numero de sedes que desee el usuario 
+            System.out.println("Desea introducir mas sedes?");
+            respuesta = entrada.nextLine();
+        } while (respuesta.equalsIgnoreCase("Si"));
+        
+        return sedes;
+    }
+    
+    //Metodo que busca sedes con el mismo nombre que el introducido por parametro y devuelve true (si la encuentra) o false (si no)
     public boolean buscarSedes(String nombre){
-        Iterator<Sede> it = sedes.iterator();
+        Iterator<Sede> it = sedes.iterator();   //Iterador
         
         boolean encontrado = false;
         
-        while(it.hasNext() && !encontrado){
+        while(it.hasNext() && !encontrado){ //Busqueda
             Sede sede = it.next();
            if(sede.getNombre().equalsIgnoreCase(nombre)){
                encontrado = true;
@@ -76,7 +94,8 @@ public class Ciudad {
         }
         return encontrado;
     }
-    //Metodo para mostrar el conjunto de Sedes
+    
+    //Metodo para mostrar el conjunto de Sedes de una Ciudad
     public void mostrarSedes(){
         System.out.println("SEDES");
         for(Sede s : sedes){
