@@ -119,7 +119,7 @@ public class T11Ej03 {
 
         System.out.println("Busqueda...");
         while (!encontrado && i < autobuses.length) {
-            if (autobuses[i] != null) {  //Control de excepcion NullPointer
+            if (autobuses[i] != null) {  //Control de excepcion NullPointer  //&& autobuses[i].getConductores().containsKey(claveUsuario)
                 encontrado = autobuses[i].buscarConductor(claveUsuario); //Metodo que busca si hay algun conductor con la misma clave en el Autobus
             }
             if (encontrado) {
