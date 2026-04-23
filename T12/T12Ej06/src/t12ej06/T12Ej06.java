@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package t12ej05;
+package t12ej06;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,23 +17,23 @@ import java.util.Scanner;
  *
  * @author alumno
  */
-public class T12Ej05 {
+public class T12Ej06 {
 
     /**
      * @param args the command line arguments
      */
-    public final static String FICHERO = "agenda.txt";
+    public static void escribirFichero(String fichero, int[] pares) throws FileNotFoundException, IOException, ArrayIndexOutOfBoundsException, NullPointerException {
 
-    public static void escribirFichero(String fichero, Contacto contacto) throws FileNotFoundException, IOException {
         System.out.println("\n- ESCRIBIENDO FICHERO -");
-
-        try (
-                FileWriter fw = new FileWriter(fichero, true); PrintWriter pw = new PrintWriter(fw);) {
-            pw.println("CONTACTO");
-            pw.println("Nombre: " + contacto.getNombre());
-            pw.println("Edad: " + contacto.getEdad());
-            pw.println("Telefono: " + contacto.getTel());
-            pw.println("-----");
+        
+        try(
+            FileWriter fw = new FileWriter(fichero);
+            PrintWriter pw = new PrintWriter(fw);
+        ) {
+            for (int i=0;i<pares.length;i++){
+                pw.println(pares[i]);
+                        
+            }
         }
     }
 
@@ -41,8 +41,9 @@ public class T12Ej05 {
         System.out.println("\n- LEYENDO FICHERO -");
 
         try (
-                FileReader fr = new FileReader(fichero); BufferedReader br = new BufferedReader(fr);) {
-            // Se puede encapsular esto en un método "leer"
+                FileReader fr = new FileReader(fichero); 
+                BufferedReader br = new BufferedReader(fr);) 
+        {
             String linea = br.readLine();
 
             while (linea != null) {
@@ -51,6 +52,22 @@ public class T12Ej05 {
                 linea = br.readLine();
             }
         }
+    }
+
+    public static int[] crearArray() throws ArrayIndexOutOfBoundsException, NullPointerException {
+        int[] pares = new int[100];
+
+        for (int i=0;i<pares.length;i++) {
+                pares[i] = i*2;
+        }
+        return pares;
+    }
+
+    public static String pedirNombreFichero() throws InputMismatchException {
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Nombre de fichero: ");
+        String nombre = entrada.nextLine();
+        return nombre;
     }
 
     //Metodo para introducir opcion del menu
@@ -65,14 +82,9 @@ public class T12Ej05 {
     //Mostrar menu
     public static void mostrarMenu() {
         System.out.println("=== MENU ===");
-        System.out.println("1-Insertar contacto en la agenda");
-        System.out.println("2-Mostrar agenda");
+        System.out.println("1-Introducir nombre de fichero");
+        System.out.println("2-Mostrar fichero");
         System.out.println("3-Salir");
-    }
-
-    public static Contacto crearContacto() throws NullPointerException {
-        Contacto contacto = new Contacto(Contacto.pedirNombre(), Contacto.pedirEdad(), Contacto.pedirNumero());
-        return contacto;
     }
 
     public static void main(String[] args) {
@@ -80,6 +92,7 @@ public class T12Ej05 {
 
         try {
             Scanner entrada = new Scanner(System.in);
+            String fichero = new String();
 
             int opcion;
             do {
@@ -88,11 +101,12 @@ public class T12Ej05 {
 
                 switch (opcion) {
                     case 1: {
-                        escribirFichero(FICHERO, crearContacto());
+                        fichero = pedirNombreFichero();
+                        escribirFichero(fichero, crearArray());
                         break;
                     }
                     case 2: {
-                        leerFichero(FICHERO);
+                        leerFichero(fichero);
                         break;
                     }
                     case 3: {
@@ -107,6 +121,8 @@ public class T12Ej05 {
 
         } catch (NullPointerException e) {
             System.out.println("ERROR: Valor nulo.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("ERROR: Indice no valido.");
         } catch (InputMismatchException e) {
             System.out.println("ERROR: Has escrito un tipo de dato incorrecto.");
         } catch (FileNotFoundException e) {
@@ -116,7 +132,6 @@ public class T12Ej05 {
         } catch (Exception e) {
             System.out.println("ERROR: Ha ocurrido un error desconocido.");
         }
-
     }
 
 }

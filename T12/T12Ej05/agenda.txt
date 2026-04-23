@@ -1,3 +1,16 @@
-desss
-23
-144211
+
+CONTACTO
+Nombre: Luci
+Edad: 25
+Telefono: 123
+-----
+CONTACTO
+Nombre: Luci
+Edad: 23
+Telefono: 123
+-----
+CONTACTO
+Nombre: AAAA
+Edad: 12
+Telefono: 2321
+-----
