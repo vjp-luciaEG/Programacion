@@ -12,10 +12,12 @@ import java.util.Scanner;
  * @author alumno
  */
 public class Contacto {
+    //Atributos
     private String nombre;
     private byte edad;
     private int tel;
 
+    //Constructores
     public Contacto() {
         nombre = "";
         edad = 0;
@@ -28,6 +30,7 @@ public class Contacto {
         this.tel = tel;
     }
 
+    //Getters/Setters
     public String getNombre() {
         return nombre;
     }
@@ -52,7 +55,7 @@ public class Contacto {
         this.tel = tel;
     }
     
-    
+    //Metodos para introducir datos
     public static String pedirNombre() throws InputMismatchException {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Nombre:");

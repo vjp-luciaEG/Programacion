@@ -24,11 +24,14 @@ public class T12Ej05 {
      */
     public final static String FICHERO = "agenda.txt";
 
+    //Metodo para escribir un Contacto en el fichero
     public static void escribirFichero(String fichero, Contacto contacto) throws FileNotFoundException, IOException {
         System.out.println("\n- ESCRIBIENDO FICHERO -");
 
-        try (
-                FileWriter fw = new FileWriter(fichero, true); PrintWriter pw = new PrintWriter(fw);) {
+        try (   //Abrimos y cerramos flujos con try with resources                                                        
+                FileWriter fw = new FileWriter(fichero, true); 
+                PrintWriter pw = new PrintWriter(fw);) 
+        {
             pw.println("CONTACTO");
             pw.println("Nombre: " + contacto.getNombre());
             pw.println("Edad: " + contacto.getEdad());
@@ -37,12 +40,15 @@ public class T12Ej05 {
         }
     }
 
+    //Metodo para leer el fichero
     public static void leerFichero(String fichero) throws FileNotFoundException, IOException {
         System.out.println("\n- LEYENDO FICHERO -");
 
-        try (
-                FileReader fr = new FileReader(fichero); BufferedReader br = new BufferedReader(fr);) {
-            // Se puede encapsular esto en un método "leer"
+        try (   //Abrimos y cerramos flujos con try with resources
+                FileReader fr = new FileReader(fichero); 
+                BufferedReader br = new BufferedReader(fr);) 
+        {
+            
             String linea = br.readLine();
 
             while (linea != null) {
@@ -70,6 +76,7 @@ public class T12Ej05 {
         System.out.println("3-Salir");
     }
 
+    //Metodo para crear un nuevo Contacto
     public static Contacto crearContacto() throws NullPointerException {
         Contacto contacto = new Contacto(Contacto.pedirNombre(), Contacto.pedirEdad(), Contacto.pedirNumero());
         return contacto;
@@ -78,11 +85,11 @@ public class T12Ej05 {
     public static void main(String[] args) {
         // TODO code application logic here
 
-        try {
+        try {                                                       //Control de Excepciones
             Scanner entrada = new Scanner(System.in);
 
             int opcion;
-            do {
+            do {                                                    //Menu de opciones
                 mostrarMenu();
                 opcion = introducirOpcion();
 

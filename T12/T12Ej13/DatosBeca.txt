@@ -1,0 +1,16 @@
+BECARIO
+Nombre: Becario1
+Sexo: H
+Edad: 40
+Numero de suspensos: 0
+Residencia Familiar: Si
+Ingreso anual: 2132.0
+-----
+BECARIO
+Nombre: Becario2
+Sexo: M
+Edad: 34
+Numero de suspensos: 2
+Residencia Familiar: No
+Ingreso anual: 3423.3
+-----

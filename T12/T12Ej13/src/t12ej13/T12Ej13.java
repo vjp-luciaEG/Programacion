@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package t12ej06;
+package t12ej13;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -17,29 +17,34 @@ import java.util.Scanner;
  *
  * @author alumno
  */
-public class T12Ej06 {
+public class T12Ej13 {
 
     /**
      * @param args the command line arguments
      */
     
-    //Metodo que escribe en el fichero los numeros del Array pasado por parametro
-    public static void escribirFichero(String fichero, int[] pares) throws FileNotFoundException, IOException, ArrayIndexOutOfBoundsException, NullPointerException {
+    public final static String FICHERO = "DatosBeca.txt";
 
+    //Metodo para escribir un Becario en el fichero
+    public static void escribirFichero(String fichero, Becario becario) throws FileNotFoundException, IOException {
         System.out.println("\n- ESCRIBIENDO FICHERO -");
-        
-        try(
-            FileWriter fw = new FileWriter(fichero);
-            PrintWriter pw = new PrintWriter(fw);
-        ) {
-            for (int i=0;i<pares.length;i++){
-                pw.println(pares[i]);
-                        
-            }
+
+        try (   //Abrir y cerrar flujos con try with resources
+                FileWriter fw = new FileWriter(fichero, true); 
+                PrintWriter pw = new PrintWriter(fw);) 
+        {
+            pw.println("BECARIO");
+            pw.println("Nombre: " + becario.getNombreConApellido());
+            pw.println("Sexo: " + becario.getSexo());
+            pw.println("Edad: " + becario.getEdad());
+            pw.println("Numero de suspensos: " + becario.getNumSuspensos());
+            pw.println("Residencia Familiar: " + becario.getResidencia());
+            pw.println("Ingreso anual: " + becario.getIngresoAnual());
+            pw.println("-----");
         }
     }
 
-    //Metodo que lee el fichero
+    //Metodo para leer el fichero
     public static void leerFichero(String fichero) throws FileNotFoundException, IOException {
         System.out.println("\n- LEYENDO FICHERO -");
 
@@ -47,6 +52,7 @@ public class T12Ej06 {
                 FileReader fr = new FileReader(fichero); 
                 BufferedReader br = new BufferedReader(fr);) 
         {
+
             String linea = br.readLine();
 
             while (linea != null) {
@@ -55,24 +61,6 @@ public class T12Ej06 {
                 linea = br.readLine();
             }
         }
-    }
-
-    //Metodo que crea un Array de 100 posiciones con los primeros numeros pares
-    public static int[] crearArray() throws ArrayIndexOutOfBoundsException, NullPointerException {
-        int[] pares = new int[100];
-
-        for (int i=0;i<pares.length;i++) {
-                pares[i] = i*2;
-        }
-        return pares;
-    }
-
-    //Metodo para pedirle el nombre del fichero al usuario
-    public static String pedirNombreFichero() throws InputMismatchException {
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Nombre de fichero: ");
-        String nombre = entrada.nextLine();
-        return nombre;
     }
 
     //Metodo para introducir opcion del menu
@@ -87,17 +75,21 @@ public class T12Ej06 {
     //Mostrar menu
     public static void mostrarMenu() {
         System.out.println("=== MENU ===");
-        System.out.println("1-Introducir nombre de fichero");
-        System.out.println("2-Mostrar fichero");
+        System.out.println("1-Insertar Becario");
+        System.out.println("2-Mostrar Datos Beca");
         System.out.println("3-Salir");
     }
 
+    //Metodo para crear Becario
+    public static Becario crearBecario() throws NullPointerException {
+        Becario becario = new Becario(Becario.introducirNombre(), Becario.introducirSexo(), Becario.introducirEdad(), Becario.introducirSuspensos(), Becario.introducirResidencia(), Becario.introducirIngresos());
+        return becario;
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
-
         try {
             Scanner entrada = new Scanner(System.in);
-            String fichero = new String();
 
             int opcion;
             do {
@@ -106,12 +98,11 @@ public class T12Ej06 {
 
                 switch (opcion) {
                     case 1: {
-                        fichero = pedirNombreFichero();
-                        escribirFichero(fichero, crearArray());
+                        escribirFichero(FICHERO, crearBecario());
                         break;
                     }
                     case 2: {
-                        leerFichero(fichero);
+                        leerFichero(FICHERO);
                         break;
                     }
                     case 3: {
@@ -126,8 +117,6 @@ public class T12Ej06 {
 
         } catch (NullPointerException e) {
             System.out.println("ERROR: Valor nulo.");
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("ERROR: Indice no valido.");
         } catch (InputMismatchException e) {
             System.out.println("ERROR: Has escrito un tipo de dato incorrecto.");
         } catch (FileNotFoundException e) {
@@ -137,6 +126,7 @@ public class T12Ej06 {
         } catch (Exception e) {
             System.out.println("ERROR: Ha ocurrido un error desconocido.");
         }
+        
     }
-
+    
 }
