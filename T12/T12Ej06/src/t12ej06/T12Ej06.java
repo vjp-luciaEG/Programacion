@@ -73,7 +73,7 @@ public class T12Ej06 {
     public static String pedirNombreFichero() throws InputMismatchException {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Nombre de fichero: ");
-        String nombre = entrada.nextLine() + ".txt";
+        String nombre = entrada.nextLine();
         return nombre;
     }
 
