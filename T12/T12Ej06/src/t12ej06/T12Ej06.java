@@ -5,6 +5,7 @@
 package t12ej06;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -23,8 +24,9 @@ public class T12Ej06 {
      * @param args the command line arguments
      */
     
+    
     //Metodo que escribe en el fichero los numeros del Array pasado por parametro
-    public static void escribirFichero(String fichero, int[] pares) throws FileNotFoundException, IOException, ArrayIndexOutOfBoundsException, NullPointerException {
+    public static void escribirFichero(File fichero, int[] pares) throws FileNotFoundException, IOException, ArrayIndexOutOfBoundsException, NullPointerException {
 
         System.out.println("\n- ESCRIBIENDO FICHERO -");
         
@@ -40,7 +42,7 @@ public class T12Ej06 {
     }
 
     //Metodo que lee el fichero
-    public static void leerFichero(String fichero) throws FileNotFoundException, IOException {
+    public static void leerFichero(File fichero) throws FileNotFoundException, IOException {
         System.out.println("\n- LEYENDO FICHERO -");
 
         try (
@@ -71,7 +73,7 @@ public class T12Ej06 {
     public static String pedirNombreFichero() throws InputMismatchException {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Nombre de fichero: ");
-        String nombre = entrada.nextLine();
+        String nombre = entrada.nextLine() + ".txt";
         return nombre;
     }
 
@@ -97,7 +99,7 @@ public class T12Ej06 {
 
         try {
             Scanner entrada = new Scanner(System.in);
-            String fichero = new String();
+            File fichero = null;
 
             int opcion;
             do {
@@ -106,7 +108,7 @@ public class T12Ej06 {
 
                 switch (opcion) {
                     case 1: {
-                        fichero = pedirNombreFichero();
+                        fichero = new File(pedirNombreFichero());
                         escribirFichero(fichero, crearArray());
                         break;
                     }
